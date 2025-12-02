@@ -33,8 +33,11 @@ docker run -p 8000:8000 -e AWS_PROFILE=default cancer-prediction-api
 ### 3. Run Interactive Dashboard (PyShiny)
 Visualize the model and interact with it using the web dashboard:
 ```bash
-pip install shiny pandas scikit-learn joblib boto3
-python -m shiny run src/dashboard.py
+# Install dependencies for Python 3
+pip3 install shiny pandas scikit-learn joblib boto3
+
+# Run the dashboard using Python 3
+python3 -m shiny run src/dashboard.py
 ```
 
 ### 4. Test the API
@@ -62,4 +65,20 @@ curl -X POST "http://localhost:8000/predict" \
 - `src/batch_inference.py`: **Batch Processing** script.
 - `src/monitoring.py`: **Drift Detection** system.
 - `src/bedrock_features.py`: **LLM Integration** (Amazon Bedrock).
-- `Dockerfile`: Deployment configuration.
+## ❓ Troubleshooting
+
+### "Killed: 9" Error
+If you see `Killed: 9` when running `pip install` or the dashboard, your system is running out of memory.
+**Solutions:**
+1.  **Use Docker**: This is the most reliable method.
+    ```bash
+    docker build -t cancer-prediction-api .
+    docker run -p 8000:8000 cancer-prediction-api
+    ```
+2.  **Install One by One**:
+    ```bash
+    pip3 install pandas
+    pip3 install scikit-learn
+    pip3 install shiny
+    ```
+3.  **Use Cloud**: Run this project on Google Colab or AWS Cloud9.
