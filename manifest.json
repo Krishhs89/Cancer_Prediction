@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "locale": "en_US",
+    "metadata": {
+        "appmode": "python-shiny",
+        "entrypoint": "dashboard"
+    },
+    "python": {
+        "version": "3.9",
+        "package_manager": {
+            "name": "pip",
+            "package_file": "requirements.txt"
+        }
+    },
+    "environment": {
+        "AWS_REGION": "us-east-1"
+    }
+}
